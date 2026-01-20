@@ -1,0 +1,52 @@
+ls
+list all content of current directory
+
+pwd 
+give detail of present working directory
+
+touch 
+help to create file 
+
+cat 
+also create file but we can write 
+
+nano
+open file editor(edit  or create file if not exist)
+
+less 
+allow to open large file and scroll 
+
+vim 
+load entire file in memory
+
+chmod 
+allow to set permission of file or folder 
+r-> read
+w-> write
+x-> execute
+
+some chmod command 
+777 -> every one has full permission
+644 -> owner can read and write , group and other can read only
+700 -> owner has full permission
+
+chown -> use to change the ownership of file or directory
+
+apt -> used tp upgrading,installing, removing package
+
+other System monitoring command
+
+top -> display realtime process of cpu
+htop -> display realtime process of cpu in interactive, color-coded Information
+
+df -h -> display usage of cpu and show free memory
+
+
+mkdir -> use to make directory from terminal
+cd -> use to change directory 
+cd .. -> use to goto parent directory
+
+mv -> use to move file from existing location to other location
+rm -> use to delete file 
+
+
