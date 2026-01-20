@@ -1,107 +1,123 @@
-:root {
-  --primary-bg-color: blanchedalmond;
-  --fixed-font-size: 16px;
-}
+    :root {
+      --primary-bg-color: blanchedalmond;
+      --fixed-font-size: 16px;
+    }
 
-/* it is use for reusable contain*/
+    /* it is use for reusable contain*/
 
+    .container {
+      width: 100%;
+      display: flex;
+    }
 
-.container{
-    width: 100%;
-    display: flex;
-}
+    /* header area */
+    .header {
+      margin-top: 10px;
+      border: 1px solid black;
+      background-color: blanchedalmond;
+      position: sticky;
+      top: 0;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333333;
+    }
 
-/* header area */
-.header {
-  margin-top: 10px;
-  border: 1px solid black;
-  background-color: blanchedalmond;
-  position: sticky;
-  top: 0;
-  
-}
+    ul li {
+      float: left;
+    }
 
-p.name {
-  font-size: 20px;
-  color: cadetblue;
-  padding-left: 50px;
-  font-weight: bold;
-}
+    ul li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
 
-p.resume {
-  font-size: 20px;
-  color: burlywood;
-  padding-left: 50px;
-  font-weight: bold;
-}
+    ul li a:hover {
+      background-color: #111111;
+    }
 
-.main {
-  border: 1px solid orange;
-  margin-top: 10px;
-  background-color: rgb(146, 46, 6);
-  height: auto;
-  width: 60%;
-  margin-left: 10px;
-}
+    p.name {
+      font-size: 20px;
+      color: cadetblue;
+      padding-left: 50px;
+      font-weight: bold;
+    }
 
-p.edu {
-  padding-left: 20px;
-  color: aqua;
-}
+    p.resume {
+      font-size: 20px;
+      color: burlywood;
+      padding-left: 50px;
+      padding-right: 20px;
+      font-weight: bold;
+    }
 
-p.exp {
-  padding-left: 20px;
-  color: skyblue;
-}
+    .main {
+      border: 1px solid orange;
+      margin-top: 10px;
+      background-color: rgb(146, 46, 6);
+      height: auto;
+      width: 40%;
+      margin-left: 10px;
+    }
 
-.contactinfo{
-    color: brown;
-    font-size: 20px;
- 
-    
-}
-
-#contact{
-    width: 25%;
-    color: brown;
-    background-color: aquamarine;
-    margin: 0px;
-    margin-top: 10px;
-    padding-left: 20px;
-    width: 300px;
-
-}
-
-.info{
-    color: rgb(3, 9, 9);
-}
-
-
-.footer
-{
-    border: 2px solid black;
-    margin-top: 10px;
-    text-align: center;
-    background-color: var(--primary-bg-color);
-    font-size: 30px;
-    position: absolute;
-    width: 100%;
-    height: 50px;
-    padding-top: 10px;
-}
+        .extra {
+      border: 5px solid orange;
+      margin-top: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
+      background-color: rgb(146, 46, 6);
+      height: auto;
+      width: auto;
+      margin-left: 10px;
+    }
 
 
-.table
-{
-  display: flex;
-  width: 25%;
-  border: 2px green double ;
-  margin-top: 10px;
-  margin-left: 10px;
-  display: block; 
-  background-color: coral; 
-}
+    p.edu {
+      padding-left: 20px;
+      padding-right: 60px;
+      color: aqua;
+      
+    }
 
-.th,td,tr{
-  border: rgb(5, 35, 47) 2px solid;
-}
+    p.exp {
+      padding-left: 20px;
+      
+      color: skyblue;
+    }
+
+    .contactinfo {
+      color: brown;
+      font-size: 20px;
+    }
+
+    #contact {
+      width: 25%;
+      color: brown;
+      background-color: aquamarine;
+      margin: 0px;
+      margin-top: 10px;
+      padding-left: 20px;
+      width: 300px;
+    }
+
+    .info {
+      color: rgb(3, 9, 9);
+    }
+
+    .footer {
+      border: 2px solid black;
+      margin-top: 10px;
+      text-align: center;
+      background-color: var(--primary-bg-color);
+      font-size: 30px;
+      position: absolute;
+      width: 100%;
+      height: 50px;
+      padding-top: 10px;
+    }

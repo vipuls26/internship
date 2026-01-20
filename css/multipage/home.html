@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -48,6 +48,33 @@
               >
             </li>
 
+                 <li class="nav-item">
+              <a
+                class="nav-link active mx-2"
+                aria-current="page"
+                href="resume.html"
+                >Resume</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link active mx-2"
+                aria-current="page"
+                href="dashboard.html"
+                >Dashboard</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link active mx-2"
+                aria-current="page"
+                href="feature.html"
+                >Feature</a
+              >
+            </li>
+
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#service"
                 >Service</a
@@ -59,6 +86,8 @@
                 >Contact us</a
               >
             </li>
+
+       
 
             <li class="nav-item dropdown">
               <a
@@ -72,9 +101,9 @@
                 Dropdown
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Service</a></li>
+                <li><a class="dropdown-item" href="#service">Service</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Contact</a></li>
+                <li><a class="dropdown-item" href="#contact">Contact</a></li>
               </ul>
             </li>
           </ul>
@@ -133,13 +162,9 @@
       </button>
     </div>
 
-
-
-
     <!-- services section -->
     <div id="service" class="card p-5 border border-5">
       <div class="row g-4">
-     
         <div class="col-sm-4">
           <div class="card">
             <div class="card-body">
@@ -188,8 +213,7 @@
           </div>
         </div>
 
-
-            <div class="col-sm-4">
+        <div class="col-sm-4">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Service 4</h5>
@@ -205,7 +229,7 @@
           </div>
         </div>
 
-            <div class="col-sm-4">
+        <div class="col-sm-4">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Service 5</h5>
@@ -221,7 +245,7 @@
           </div>
         </div>
 
-            <div class="col-sm-4">
+        <div class="col-sm-4">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Service 6</h5>
@@ -237,7 +261,7 @@
           </div>
         </div>
 
-            <div class="col-sm-4">
+        <div class="col-sm-4">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Service 7</h5>
@@ -252,91 +276,137 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
-        <!-- modal -->
-  <!-- Button trigger modal -->
+    <!-- modal -->
+    <!-- Button trigger modal -->
 
-  <div class="text-center">
-<button type="button" class="btn btn-warning mt-4" data-bs-toggle="modal" data-bs-target="#Modal">
-    Get Quote of day
-</button>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Quote of day</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p class="bg-info">Measure what is measurable, and make measurable what is not so.</p>
-      </div>
-   
+    <div class="text-center">
+      <button
+        type="button"
+        class="btn btn-warning mt-4"
+        data-bs-toggle="modal"
+        data-bs-target="#Modal"
+      >
+        Get Quote of day
+      </button>
     </div>
-  </div>
-</div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="Modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Quote of day</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="bg-info">
+              Measure what is measurable, and make measurable what is not so.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <br />
     <!-- contact section -->
-    <div id="contact" class="d-flex justify-content-center mt-5 mb-5">
-
-    
-    <form action="#" class="needs-validatation mb-5">
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input
-            type="text"
-            name="name"
-            class="form-control-mb"
-            placeholder="Enter your name" 
-            required
-          />
-        </div>
-
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input
-            type="email"
-            name="email"
-            class="form-control-mb"
-            placeholder="example@email.com"
-          />
-        </div>
-
-        <div class="mb-2">
-            <label for="checkbox" class="form-label">Language: </label>
-            <input type="checkbox" class="form-check-input">PHP
-            <input type="checkbox" class="form-check-input">Javascript
-        </div>
-
-        <div class="mb-2">
-          <label for="textarea" class="form-label">Feedback</label>
-          <textarea
-            name="feedback"
-            id="feedback"
-            class="form-control-mb"
-            rows="3"
-          ></textarea>
-        </div>
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary">submit</button>
-        </div>
-      </form>
+  
+    <div id="contact">
      
+    <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mb-4">contact us</h2>
+            <form>
+          
+              <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    
+                </div>
+
+       
+             <!-- Text Area -->
+                <div class="mb-3">
+                    <label for="exampleTextarea" class="form-label">Message</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                </div>
+
+                <!-- Select Dropdown -->
+                <div class="mb-3">
+                    <label for="exampleSelect" class="form-label">Select language</label>
+                    <select class="form-select" id="exampleSelect">
+                        <option value="php">PHP</option>
+                        <option value="javascript">JAVASCRIPT</option>
+                        <option value="html">HTML</option>
+                    </select>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Choose an option:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            CSS
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            BOOTSTRAP
+                        </label>
+                    </div>
+
+                     <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            TAILWIND css
+                        </label>
+                    </div>
+                </div>
+
+
+            
+                <button type="submit" class="btn btn-primary col-8">Submit</button>
+
+                <BR><BR></BR></BR>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
       <!-- footer -->
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom mt-5">
-  <div class="container-fluid">
- 
-        <div class="navbar-brand">footer of website</div>
-  </div>
-</nav>
-    </div>
+      <nav
+        class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom mt-5"
+      >
+        <div class="container-fluid">
+          <div class="navbar-brand">footer of website</div>
+        </div>
+      </nav>
+    
   </body>
 </html>

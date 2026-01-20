@@ -1,114 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-    rel="stylesheet"
-  />
-</head>
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
 
-<body class="min-h-screen flex flex-col bg-red-200 sm:bg-blue-100 md:bg-green-200">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+  </head>
 
-  <!-- NAVBAR -->
-  <nav class="flex items-center justify-between h-16 w-full bg-blue-100 px-4">
-    <div class="bg-yellow-200 px-4 py-2 rounded-md">
-      <a href="#" class="font-semibold text-gray-800">Dashboard</a>
-    </div>
-
-    <div class="flex-1 flex justify-center px-4">
-      <input
-        type="search"
-        placeholder="Search here"
-        class="w-full max-w-md bg-green-100 rounded-xl border-2 border-green-200 px-4 py-1.5 outline-none focus:ring-2 focus:ring-green-400"
-      />
-    </div>
-
-<details class="relative inline-block">
-  <summary
-    class="bg-green-400 px-4 py-2 rounded-md font-medium text-black cursor-pointer list-none"
+  <body
+    class="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900 dark:text-gray-100"
   >
-    Profile
-  </summary>
-
-  <div
-    class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg border"
-  >
-    <a href="#" class="block px-4 py-2 hover:bg-gray-100">profile</a>
-  </div>
-</details>
-
-
-
-    <img src="/assets/hamburger.png" width="40px" class="ml-4 md:hidden sm:hidden " alt="">
-  </nav>
-
-  <!-- MAIN -->
-  <main class="flex flex-1 overflow-hidden">
-
-    <!-- SIDEBAR -->
-    <aside class="w-56 bg-black text-white p-4 hidden sm:block">
-      <div class="space-y-2">
-        <a class="block bg-yellow-200 text-black px-3 py-2 rounded hover:bg-yellow-300" href="dashboard.html">Home</a>
-        <a class="block bg-yellow-200 text-black px-3 py-2 rounded hover:bg-yellow-300" href="feature.html">Features</a>
-        <a class="block bg-yellow-200 text-black px-3 py-2 rounded hover:bg-yellow-300" href="resume.html">Resume</a>
-      </div>
-    </aside>
-
-    <!-- CONTENT -->
-    <section class="flex-1 p-6 overflow-y-auto">
-
-      <!-- CARDS -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="p-4 bg-black rounded shadow">
-          <h2 class="text-white font-semibold">Orders</h2>
-          <hr class="my-2">
-          <p class="text-green-500">Increase by 10%</p>
-        </div>
-
-        <div class="p-4 bg-black rounded shadow">
-          <h2 class="text-white font-semibold">Revenue</h2>
-          <hr class="my-2">
-          <p class="text-red-500">Decrease by 5%</p>
-        </div>
-
-        <div class="p-4 bg-black rounded shadow">
-          <h2 class="text-white font-semibold">Users</h2>
-          <hr class="my-2">
-          <p class="text-green-500">Increase by 20%</p>
-        </div>
+    <!-- nav -->
+    <nav
+      class="flex items-center justify-between h-16 w-full bg-blue-100 dark:bg-gray-800 px-4"
+    >
+      <div class="bg-white dark:bg-gray-700 px-4 py-2 rounded-md">
+        <a
+          href="dashboard.html"
+          class="font-semibold text-gray-800 dark:text-gray-100"
+        >
+          Dashboard
+        </a>
       </div>
 
-      <!-- GRAPH SECTION -->
-      <div class="mt-10 bg-blue-100 p-6 rounded">
-
-        <!-- Vertical bars -->
-        <div class="flex items-end space-x-4 h-48">
-          <div class="w-12 bg-red-300 h-48"></div>
-          <div class="w-12 bg-green-200 h-40"></div>
-          <div class="w-12 bg-yellow-300 h-32"></div>
-          <div class="w-12 bg-blue-400 h-24"></div>
-        </div>
-
-        <!-- Horizontal bars -->
-        <div class="mt-6 space-y-2">
-          <div class="h-6 bg-red-300 w-48"></div>
-          <div class="h-6 bg-green-200 w-40"></div>
-          <div class="h-6 bg-yellow-300 w-32"></div>
-          <div class="h-6 bg-blue-400 w-24"></div>
-        </div>
-
+      <div class="flex-1 flex justify-center px-4">
+        <input
+          type="search"
+          placeholder="Search here"
+          class="w-full max-w-md bg-green-100 dark:bg-gray-700 dark:text-white rounded-xl border-2 border-green-200 dark:border-gray-600 px-4 py-1.5 outline-none focus:ring-2 focus:ring-green-400"
+        />
       </div>
 
-    </section>
-  </main>
+      <div class="flex items-center gap-4">
+        <button onclick="toggleDarkMode()">
+          <img src="/assets/night-mode.png" width="25" alt="Dark Mode" />
+        </button>
 
-  <!-- FOOTER -->
-  <footer class="bg-red-200 text-center py-3 font-medium">
-    © 2026 Dashboard
-  </footer>
+        <details class="relative">
+          <summary
+            class="bg-green-400 px-4 py-2 rounded-md font-medium text-black cursor-pointer list-none"
+          >
+            Profile
+          </summary>
+          <div
+            class="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 rounded-md shadow-lg border"
+          >
+            <a
+              href="#"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+              >Profile</a
+            >
+          </div>
+        </details>
+      </div>
+    </nav>
 
-</body>
+    <main class="flex flex-1 overflow-hidden">
+      <aside class="w-56 bg-gray-200 dark:bg-gray-800 p-4 hidden sm:block">
+        <div class="space-y-2">
+          <a
+            class="block bg-yellow-200 text-black px-3 py-2 rounded hover:bg-yellow-300"
+            href="home.html"
+            >Home</a
+          >
+          <a
+            class="block bg-yellow-200 text-black px-3 py-2 rounded hover:bg-yellow-300"
+            href="feature.html"
+            >Features</a
+          >
+          <a
+            class="block bg-yellow-200 text-black px-3 py-2 rounded hover:bg-yellow-300"
+            href="resume.html"
+            >Resume</a
+          >
+        </div>
+      </aside>
+
+      <section class="flex-1 p-6 overflow-y-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-4 bg-white dark:bg-gray-900 rounded shadow">
+            <h2 class="font-semibold">Orders</h2>
+            <hr class="my-2" />
+            <p class="text-green-500">Increase by 10%</p>
+          </div>
+
+          <div class="p-4 bg-white dark:bg-gray-900 rounded shadow">
+            <h2 class="font-semibold">Revenue</h2>
+            <hr class="my-2" />
+            <p class="text-red-500">Decrease by 5%</p>
+          </div>
+
+          <div class="p-4 bg-white dark:bg-gray-900 rounded shadow">
+            <h2 class="font-semibold">Users</h2>
+            <hr class="my-2" />
+            <p class="text-green-500">Increase by 20%</p>
+          </div>
+        </div>
+
+        <div class="mt-10 bg-blue-100 dark:bg-gray-800 p-6 rounded">
+          <div class="flex items-end space-x-4 h-48">
+            <div class="w-12 bg-red-300 h-48"></div>
+            <div class="w-12 bg-green-200 h-40"></div>
+            <div class="w-12 bg-yellow-300 h-32"></div>
+            <div class="w-12 bg-blue-400 h-24"></div>
+          </div>
+
+          <div class="mt-6 space-y-2">
+            <div class="h-6 bg-red-300 w-48"></div>
+            <div class="h-6 bg-green-200 w-40"></div>
+            <div class="h-6 bg-yellow-300 w-32"></div>
+            <div class="h-6 bg-blue-400 w-24"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="bg-red-200 dark:bg-gray-800 text-center py-3 font-medium">
+      © 2026 Dashboard
+    </footer>
+
+    <script>
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle("dark");
+
+        if (document.documentElement.classList.contains("dark")) {
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+      }
+
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </body>
 </html>
