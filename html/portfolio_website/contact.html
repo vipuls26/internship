@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>contact page</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="device-width, initial-scale=1.0" />
+    <meta name="description" content="this is website for portfolio" />
+    <meta name="author" content="vips" />
+    <meta name="Keywords" content="html,css,javascript" />
+    <link rel="shortcut icon" href="download.jpeg" type="image/x-icon" />
+  </head>
+
+  <body>
+    <hr />
+
+    <header>
+      <h1>this is contact page of website</h1>
+    </header>
+
+    <hr />
+    <nav>
+      <li><a href="index.html">home</a></li>
+      <li><a href="contact.html">contact us</a></li>
+      <li><a href="about.html">about us</a></li>
+      <li><a href="blog.html">blog page</a></li>
+    </nav>
+
+    <hr />
+    <dl>
+      <dt>
+        <a href="mailto:somwexample@gmail.com" title="mail us directly"
+          ><mark><strong> mail us </strong></mark></a
+        >
+      </dt>
+      <dl>use this link to mail us</dl>
+    </dl>
+
+    <dl>
+      <dt>
+        <a href="tel:+1236547892" title="call us directly">
+          <mark><strong> call us </strong></mark></a
+        >
+      </dt>
+      <dl>use this link for call</dl>
+    </dl>
+
+    <h4>quick links of tutorial for html</h4>
+    <a
+      href="https://www.w3schools.com/html/default.asp"
+      title="go to website"
+      target="_blank"
+      >w3school</a
+    >
+
+    <h3>ask question on stack overflow</h3>
+    <a href="https://stackoverflow.com/questions" target="_blank"
+      >stack overflow</a
+    >
+    <hr />
+
+    <h2>sign up page</h2>
+    <form>
+      <label for="name">name:</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="enter your name"
+        pattern="[a-z]{1,10}"
+        title="username must be in lower case"
+        required
+      />
+
+      <br /><br />
+
+      <label for="email">email</label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+"
+        placeholder="enter your email"
+      />
+
+      <br />
+      <br />
+      <label for="password">password:</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="enter password"
+        pattern="[a-z]{3,10}"
+        title="password must be min 3 to 10 character only "
+        required
+      />
+
+      <br />
+      <br />
+      <label for="conpassword">confirm password:</label>
+      <input
+        type="password"
+        id="conpassword"
+        placeholder="re enter password"
+        pattern="[a-z]{3,10}"
+        title="password must be min 3 to 10 character only "
+        required
+      />
+
+      <br />
+      <br />
+      <label for="phone">phone</label>
+      <input
+        type="tel"
+        placeholder="phone number"
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        title="must match as  this 111-111-1111"
+      />
+      <br />
+      <br />
+      <label for="gender">gender</label>
+      <input type="radio" name="gender" id="female" />female
+      <input type="radio" name="gender" id="male" />male
+
+      <br />
+      <br />
+
+      <label for="country">country</label>
+      <select name="country" id="country">
+        <option value="india">india</option>
+        <option value="usa">usa</option>
+        <option value="japan">japan</option>
+        <option value="canada">canada</option>
+      </select>
+      <br />
+
+      <br />
+
+      <input type="checkbox" name="terms" id="terms" />
+      <label for="terms">terms</label>
+      <label for="conditions">conditions</label>
+
+      <br /><br />
+      <button type="submit">submit</button>
+    </form>
+
+    <hr />
+
+    <footer>
+      <h3>this is footer of website</h3>
+    </footer>
+  </body>
+</html>

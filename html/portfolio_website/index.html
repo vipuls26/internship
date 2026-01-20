@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>portfolio website</title>
+    <meta charset="UTF-8" />
+    <meta name="Keywords" content="Html, css, javascript" />
+    <meta name="author" content="Vips" />
+    <meta name="description" content="this is for website description" />
+    <meta name="viewport" content="device-width, initial-scale=1.0" />
+    <link rel="icon" href="./download.jpeg" type="image/x-icon" />
+  </head>
+
+  <body>
+    <a href="#skip" title="skip to main content">skip</a>
+    <hr />
+    <header>
+      <marquee> <h1>this is home page of website</h1></marquee>
+    </header>
+
+    <hr />
+    <br />
+    <nav>
+      <li><a href="index.html">home</a></li>
+      <li><a href="contact.html">contact us</a></li>
+      <li><a href="about.html">about us</a></li>
+      <li><a href="blog.html">blog page</a></li>
+    </nav>
+    <hr />
+
+    <h3>video with caption</h3>
+    <h1>video with source and track</h1>
+    <!-- video -->
+    <video width="400" height="400" controls>
+      <source src="test.mp4" />
+      <!-- <track srclang="en" src="caption.vtt" kind="subtitles" label="English" default> -->
+      <track
+        srclang="en"
+        src="caption.vtt"
+        kind="subtitles"
+        label="English"
+        default
+      />
+    </video>
+
+    <h4>lazy loading</h4>
+    <iframe
+      src="https://patoliyainfotech.github.io/assets/pdf/html.pdf"
+      width="400"
+      height="400"
+    ></iframe>
+    <hr />
+    <div>
+      <!-- figure -->
+      <figure>
+        <img
+          src="images.jpeg"
+          alt="this is figure demo test"
+          width="250px"
+          height="250px"
+        />
+      </figure>
+
+      <!-- image with figcaption -->
+      <figure>
+        <img
+          src="images.jpeg"
+          alt="this is figcaption demo test."
+          loading="lazy"
+        />
+        <figcaption>this is image test for fig caption</figcaption>
+      </figure>
+    </div>
+
+    <hr />
+    <footer>
+      <h3>this is footer of website</h3>
+    </footer>
+
+    <hr />
+    <div id="skip">this is main content of website</div>
+    <p>it is what it is</p>
+  </body>
+</html>
