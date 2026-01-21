@@ -1,0 +1,118 @@
+Github base 
+    
+    git install 
+        -> for installing git on system
+    git config
+        -> for setting name and email on system
+
+    git config --global user.email 
+        -> set email in git    
+    git config --global user.name 
+        -> set name in git    
+    git --version
+        -> to see current version of git 
+    
+Github workflow
+
+    git init 
+        -> initialize git on folder
+    git add .
+        -> stage change on git
+    git commit -m "commit"
+        -> adding commit for save point
+    git push
+        -> upload local repo to remote repo ( i.e for github,gitlab)
+    git status
+        -> check what's going on
+
+fork vs clone
+
+    fork -> copy of someone's else repo that live on your github account 
+            allow to change wuhtout affecting original project
+   
+    clone ->copy of repo on local machince 
+            allow us to work offline
+
+    git clone "repo link" 
+
+ssh 
+    secure shell -> use to connect securly to remote computer and service
+
+    ssh -> pair of key (private and public)
+           make sure only you can access your code
+
+Git undo  
+    git revert -> undoes previous commiy by creating new commit that reverse the change
+    git revert HEAD -> for latest commit
+    git revert HEAD^^ -> for last two commit
+    git revert <commit> -> for specific commit
+
+git reset 
+    moves current branch to different commit
+
+    git reset --soft <commit>
+        -> move HEAD to commit keep change  stage
+    git reset --mixed <commit>
+        -> move head to commit and unstage change
+    git reset --hard <commit>
+        -> move head to commit and sicard all change 
+    git reset <file> 
+        -> unstage file
+
+    git log -> show commit history
+
+git rebase 
+    -> combine sequence of commit to a new base commit
+    -> keep clean , linear project history
+    -> avoid unnecessary merge commit
+    -> combine multiple commit in one
+
+    git rebase <base branch>
+
+
+git tag 
+
+    -> use to give label or bookmark for specific commit
+
+git release
+
+    -> use to release different version of project
+
+git branch
+    -> use to create branch of current code without affecting main code 
+    -> use to add feature in project without affecting main code
+
+    git branch 
+    -> for listing all brnach 
+
+    git branch <branch>
+    -> for create branch
+
+    git checkout <branch name>
+    -> to navigate between branch
+
+git merge 
+    -> combine change from one branch into another
+
+    git merge <branch name>
+
+
+git remote add origin <url>
+    -> make connection between local repo and remote repo
+
+git remote -v 
+    -> to see remote link repo 
+
+
+
+git pull 
+    -> it is combination of fetch + merge 
+    -> use of fetch from remote repo 
+
+git status
+    -> check status if file are stage or unstage
+
+git push 
+    -> upload code to remote repo
+
+    i.e -> git push origin -u main
