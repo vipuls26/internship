@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive User Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <style>
+
+      .container{
+        overflow-x: auto;
+      }
+
+  </style>
+  
+  <body>
+
+    <form id="frm1" class="container mt-5 mx-auto">
+  <div class="row g-3 justify-content-center align-items-end">
+
+    <!-- Name -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        placeholder="First name"
+        required
+      />
+      
+    </div>
+
+    <!-- Age -->
+    <div class="col-12 col-md-6 col-lg-2">
+      <label for="age" class="form-label">Age</label>
+      <input
+        type="number"
+        name="age"
+        id="age"
+        class="form-control"
+        placeholder="Age"
+        required
+      />
+    </div>
+
+    <!-- Email -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+        placeholder="Email"
+        required
+      />
+    </div>
+
+    <!-- Button -->
+    <div class="col-12 col-md-6 col-lg-2 d-grid">
+      <label class="form-label d-none d-lg-block"></label>
+      <input
+        type="submit"
+        value="Add"
+        id="newUser"
+        class="btn btn-success"
+      />
+    </div>
+
+  </div>
+</form>
+
+    <div class="container my-5">
+      <span id="demo" class="">No user</span>
+    </div>
+
+    <div class="container my-5">
+      <button id="findAdult" class="btn btn-warning">Highlight Adult</button>
+
+      <button id="removeAdult" class="btn btn-primary">Remove Highlight</button>
+    </div>
+
+    <script>
+      //user profile
+
+      const data = [
+        { ID: 1, Name: "vipul", Age: 25, Email: "vipul@gmail.com" },
+        { ID: 2, Name: "jhon", Age: 19, Email: "jhon@gmail.com" },
+        { ID: 3, Name: "doe", Age: 28, Email: "doe@gmail.com" },
+        { ID: 4, Name: "snow", Age: 13, Email: "snow@gmail.com" },
+      ];
+
+      //display user list
+      const list = document.getElementById("demo");
+
+      function userlist() {
+        let html = `
+        
+        <table class="table table-border-dark">
+          <tr class="table table-dark">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+      `;
+
+        data.forEach((user) => {
+          html += `
+          <tr class="user" data-age="${user.Age}">
+            <td>${user.ID}</td>
+            <td>${user.Name}</td>
+            <td>${user.Age}</td>
+            <td>${user.Email}</td>
+            <td>
+              <button class="btn btn-danger" onclick="deleteUser(${user.ID})">Delete</button>
+            </td>
+          </tr>
+        `;
+        });
+
+        html += "</table>";
+        list.innerHTML = html;
+      }
+
+      userlist();
+
+      // add user
+
+      const formdata = document.getElementById("frm1");
+
+      formdata.addEventListener("submit", function (element) {
+        element.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        const email = document.getElementById("email").value;
+
+        const newUser = {
+          ID: 12,
+          Name: name,
+          Age: age,
+          Email: email,
+        };
+
+        data.push(newUser);
+        userlist();
+
+        console.log(userlist());
+      });
+
+      //find adult
+
+      document
+        .getElementById("findAdult")
+        .addEventListener("click", function () {
+          const rows = document.querySelectorAll(".user");
+
+          rows.forEach((row) => {
+            const age = Number(row.dataset.age);
+            row.style.backgroundColor = age >= 18 ? "yellow" : "white";
+          });
+        });
+
+      document
+        .getElementById("removeAdult")
+        .addEventListener("click", function () {
+          const rows = document.querySelectorAll(".user");
+
+          rows.forEach((row) => {
+            const age = Number(row.dataset.age);
+            row.style.backgroundColor = "white";
+          });
+        });
+
+      // delete user
+
+      function deleteUser(id) {
+        const user = data.findIndex((userlist) => userlist.ID == id);
+        if (user !== -1) {
+          alert("confirmed to delete user");
+          data.splice(user, 1);
+          userlist();
+        }
+      }
+    </script>
+  </body>
+</html>

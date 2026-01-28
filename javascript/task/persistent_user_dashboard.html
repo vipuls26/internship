@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Persistent User Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <p id="error_message"></p>
+
+    <div class="container">
+      <h3 class="d-flex justify-content-center">
+        User are fetch from localStorage
+      </h3>
+      <br />
+      <p
+        id="userdisplay"
+        class="d-flex justify-content-center"
+        style="color: brown"
+      ></p>
+    </div>
+
+    <div class="container">
+      <button id="fetchData" onclick="fetchData()" class="btn btn-dark">
+        fetch data
+      </button>
+
+      <button id="clearuser" onclick="clearuser()" class="btn btn-danger">
+        clear all user
+      </button>
+    </div>
+
+    <script>
+      const users = [
+        {
+          id: 101,
+          name: "vipul",
+          age: 22,
+          email: "vipulsodhaparmar@gmail.com",
+        },
+        { id: 102, name: "sam", age: 15, email: "sam@gmail.com" },
+        { id: 103, name: "jhon", age: 20, email: "jhon@gmail.com" },
+        { id: 104, name: "peter", age: 25, email: "peter12@gmail.com" },
+        { id: 105, name: "snow", age: 29, email: "snow123@gmail.com" },
+      ];
+
+      const str_user = JSON.stringify(users);
+
+      function fetchData() {
+        localStorage.setItem("alluser", str_user);
+        location.reload();
+      }
+
+      let txt = localStorage.getItem("alluser");
+      let newuser = JSON.parse(txt);
+
+      if (newuser == null) {
+        document.getElementById("userdisplay").innerHTML = "no user available";
+      } else {
+        let text = "";
+        text += `            
+        <table class="table table-border-dark">
+          <tr class="table table-dark">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+          </tr>`;
+        newuser.forEach((ele) => {
+          text += `         
+          <tr>
+            <td>${ele.id}</td>
+            <td>${ele.name}</td>
+            <td>${ele.age}</td>
+            <td>${ele.email}</td>  
+          </tr> `;
+        });
+        document.getElementById("userdisplay").innerHTML = text;
+      }
+
+      try {
+        console.log("user were display from localstorage");
+      } catch (error) {
+        let msg = error.message;
+        console.log(msg);
+        document.getElementById("error_message").innerHTML = msg;
+        console.log("the json parse error :", error.message);
+      }
+
+      function clearuser() {
+        alert("confirm to clear all user from localstorage");
+        localStorage.clear("alluser");
+        location.reload();
+      }
+
+      
+    </script>
+  </body>
+</html>
+
+<!-- addspiner when fetch data click -->

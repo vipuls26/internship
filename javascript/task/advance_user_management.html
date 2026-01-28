@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advance user management System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h3 class="d-flex justify-content-center">All user</h3>
+      <p id="allUsers">all user</p>
+    </div>
+    <hr />
+    <div class="container">
+      <h3>Adult users</h3>
+      <details>
+        <summary>Adult users from list</summary>
+        <p id="adultuser">No adult user</p>
+      </details>
+    </div>
+    <hr />
+    <div class="container">
+      <h3>all user gmail</h3>
+      <details>
+        <summary>Gmail of users</summary>
+        <ul>
+          <p id="getemail">No gmail found</p>
+        </ul>
+      </details>
+    </div>
+    <hr />
+    <script>
+      const users = new Map();
+
+      const user1 = { id: 101, name: "jhon", email: "jhon@gmail.com", age: 22 };
+      users.set(user1.id, user1);
+
+      const user2 = { id: 102, name: "sam", email: "sam@yahoo.com", age: 35 };
+      users.set(user2.id, user2);
+
+      const user3 = {
+        id: 103,
+        name: "vipul",
+        email: "vipul@email.com",
+        age: 23,
+      };
+      users.set(user3.id, user3);
+
+      const user4 = { id: 104, name: "snow", email: "snow@gmail.com", age: 12 };
+      users.set(user4.id, user4);
+
+      const user5 = {
+        id: 105,
+        name: "mike",
+        email: "vipul@email.com",
+        age: 15,
+      };
+      users.set(user5.id, user5);
+
+      console.log(users);
+
+      class User {
+        constructor(id, name, email, age) {
+          this.id = id;
+          this.name = name;
+          this.email = email;
+          this.age = age;
+        }
+
+        isAdult() {
+          let adultuser = "";
+          adultuser += ``;
+          users.forEach((user) => {
+            if (user.age >= 18) {
+              adultuser += ` <li>${user.name}</li>`;
+            }
+          });
+
+          document.getElementById("adultuser").innerHTML = adultuser;
+        }
+
+        getemaildomian() {
+          let email1 = "";
+
+          email1 += ``;
+
+          users.forEach((user) => {
+            email1 += `<li>${user.email}</li>`;
+          });
+
+          document.getElementById("getemail").innerHTML = email1;
+        }
+
+        allUsers() {
+          let output = "";
+
+          output += `
+           <table class="table table-border-dark">
+          <tr class="table table-dark">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+          </tr>
+      `;
+
+          users.forEach((user) => {
+            output += `
+            
+            <tr>
+
+            <td>${user.id} </td>
+            <td>${user.name} </td>
+           <td> ${user.age} </td>
+            <td> ${user.email} </td>
+         
+      
+        `;
+          });
+
+          document.getElementById("allUsers").innerHTML = output;
+        }
+      }
+
+      const test = new User();
+      test.allUsers();
+
+      test.isAdult();
+      test.getemaildomian();
+    </script>
+  </body>
+</html>

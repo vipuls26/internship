@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mini E-Commerce</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media (max-width: 768px) {
+        .navbar img {
+          width: 45px;
+          height: 45px;
+        }
+
+        .navbar input {
+          height: 50px;
+        }
+
+        .navbar button img {
+          height: 30px;
+          width: 30px;
+          margin-right: 0;
+        }
+
+        .card img {
+          max-height: 120px;
+        }
+
+        footer h4 {
+          font-size: 16px;
+        }
+      }
+
+      a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info py-2 fixed-top">
+      <div class="container-fluid d-sm-flex flex-sm-row">
+        <img src="assets/logo.png" width="60" height="60" class="me-2" />
+
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mx-3"></ul>
+
+          <input
+            class="form-control me-auto w-25"
+            type="search"
+            placeholder="Search"
+            id="search"
+          />
+          <button
+            class="btn btn-secondary ms-lg-1 mt-1 mt-lg-1"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasScrolling"
+          >
+            <img src="./assets/cart.png" height="30" />
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid py-3">
+      <img src="./assets/image1.jpg" class="img-fluid rounded w-100" />
+    </div>
+
+    <div class="container" id="allproduct">
+      <div class="row justify-content-center g-3" id="product_container">
+        No product
+      </div>
+    </div>
+
+    <footer class="bg-dark mt-5">
+      <h4 class="text-light py-4 text-center">E-Commerce © 2026</h4>
+    </footer>
+
+    <div
+      class="offcanvas offcanvas-start offcanvas-start-lg"
+      data-bs-scroll="true"
+      data-bs-backdrop="false"
+      id="offcanvasScrolling"
+    >
+      <div class="offcanvas-header">
+        <h5>Cart</h5>
+        <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <div id="cart_display_html">Cart empty</div>
+      </div>
+    </div>
+
+    <script>
+      const productList = new Map([
+        [
+          101,
+          {
+            id: 101,
+            name: "Headphone",
+            price: 5999,
+            img: "./assets/headphone.jpeg",
+            stock: 10,
+          },
+        ],
+        [
+          102,
+          {
+            id: 102,
+            name: "Mobile",
+            price: 14999,
+            img: "./assets/mobile.jpeg",
+            stock: 30,
+          },
+        ],
+        [
+          103,
+          {
+            id: 103,
+            name: "Tablet",
+            price: 9990,
+            img: "./assets/tab.jpeg",
+            stock: 23,
+          },
+        ],
+        [
+          104,
+          {
+            id: 104,
+            name: "Notebook",
+            price: 120,
+            img: "./assets/notebook.jpg",
+            stock: 32,
+          },
+        ],
+        [
+          105,
+          {
+            id: 105,
+            name: "Cycle",
+            price: 99990,
+            img: "./assets/cycle.png",
+            stock: 3,
+          },
+        ],
+        [
+          106,
+          {
+            id: 106,
+            name: "Data Cable",
+            price: 150,
+            img: "./assets/cable.jpg",
+            stock: 8,
+          },
+        ],
+        [
+          107,
+          {
+            id: 107,
+            name: "Bag",
+            price: 599,
+            img: "./assets/bag.jpeg",
+            stock: 2,
+          },
+        ],
+        [
+          108,
+          {
+            id: 108,
+            name: "Pen",
+            price: 10,
+            img: "./assets/pen.jpeg",
+            stock: 100,
+          },
+        ],
+      ]);
+
+      function displayProducts(products) {
+        let html = "";
+        products.forEach((p) => {
+          html += `
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 shadow-sm border-dark text-center p-2">
+                      <img src="${p.img}" class="img-fluid mx-auto" style="max-height:140px"><hr>
+                        <h6>${p.name}</h6>
+                        <p class="text-primary">₹${p.price}</p>
+                        <p class="text-success">Stock:${p.stock} </p>
+                        
+                      <button class="btn btn-success w-100 btn-sm" id="cart" onclick="addToCart(${p.id})">Add to Cart</button>
+
+                    </div>
+                  </div>`;
+        });
+
+        document.getElementById("product_container").innerHTML = html;
+      }
+
+      displayProducts([...productList.values()]);
+
+      const cart = new Map();
+
+      function addToCart(id) {
+        const product = productList.get(id);
+        // console.log(product);
+
+        const stock = product.stock;
+
+        if (cart.has(id)) {
+          let thresoldstock = cart.get(id).qty++;
+
+          if (thresoldstock >= stock) {
+            alert("out of stock");
+            return;
+            const btn = document.getElementById("cart");
+            console.log(btn);
+            if (btn) {
+              btn.disabled = true;
+            }
+            
+          } else {
+            cart.get(id).qty++;
+          }
+        } else {
+          cart.set(id, { product, qty: 1 });
+        }
+
+        displayCart();
+      }
+
+      function displayCart() {
+        let html = "";
+        let total = 0;
+
+        if (cart.size === 0) {
+          html = "No item in cart";
+        } else {
+          cart.forEach(({ product, qty }) => {
+            total += product.price * qty;
+
+            html += `
+                  <div class="card mb-2 p-2">
+                      <div class="d-flex align-items-center">
+                          <img src="${product.img}" height="50">
+                            <div class="ms-2">
+                              <h6>${product.name}</h6>
+                              <small>Qty:${qty}</small><br>
+                              <small>₹${product.price * qty}</small>
+                              <p></p>
+                            </div>
+                          </div>       
+                        </div>`;
+          });
+
+          html += `<hr><h6 class="text-end">Total: ₹${total}</h6>`;
+        }
+
+        document.getElementById("cart_display_html").innerHTML = html;
+      }
+
+      function debounce(fn, delay) {
+        let t;
+        return function () {
+          clearTimeout(t);
+          t = setTimeout(fn, delay);
+        };
+      }
+
+      function searchProduct() {
+        const v = document.getElementById("search").value.toLowerCase();
+        const f = [...productList.values()].filter((p) =>
+          p.name.toLowerCase().includes(v),
+        );
+        displayProducts(f);
+      }
+
+      document
+        .getElementById("search")
+        .addEventListener("input", debounce(searchProduct, 400));
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
