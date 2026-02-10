@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>chart js</title>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="https://code.highcharts.com/themes/adaptive.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-dark py-3">
+      <div class="d-flex justify-content-start">
+        <p class="text-light fw-bold mx-2">Professional Dashboard</p>
+      </div>
+
+      <div class="d-flex justify-content-end mx-3">
+        <button
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample"
+          aria-controls="offcanvasExample"
+        >
+          <img
+            src="./assets/profile.jpeg"
+            class="rounded-circle"
+            height="50px"
+            alt="profile photo"
+          />
+        </button>
+      </div>
+    </nav>
+
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4 border-info">
+        <div id="horizontal"></div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div id="column"></div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div id="line"></div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div id="PieChart"></div>
+      </div>
+
+    
+    </div>
+
+    <div
+      class="offcanvas offcanvas-start bg-dark"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-light" id="offcanvasExampleLabel">
+          Professional Dashboard
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="text-dark">
+          <p class="bg-warning px-2 py-2 fw-bold">Dashboard</p>
+          <p class="bg-warning px-2 py-2 fw-bold">Profile</p>
+          <p class="bg-warning px-2 py-2 fw-bold">Invoice</p>
+          <p class="bg-warning px-2 py-2 fw-bold">Pricing</p>
+          <p class="bg-warning px-2 py-2 fw-bold">Tasks</p>
+        </div>
+
+        <div class="fixed-bottom text-light">
+          <button class="btn btn-danger mx-4 my-4" id="logout">logout</button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // horizontal graph
+      const chart = Highcharts.chart("horizontal", {
+        chart: {
+          type: "bar",
+        },
+        title: {
+          text: "Product Consumption",
+        },
+        xAxis: {
+          categories: ["Dark chocolate", "white chocolate", "milk bar"],
+        },
+        yAxis: {
+          title: {
+            text: "product",
+          },
+        },
+        series: [
+          {
+            year: "2024",
+            data: [4, 8, 4],
+          },
+          {
+            year: "2025",
+            data: [5, 7, 3],
+          },
+        ],
+      });
+
+      // column chart
+      Highcharts.chart("column", {
+        chart: {
+          type: "column",
+          options3d: {},
+        },
+        title: {
+          text: "product consumpation per month",
+        },
+        plotOptions: {
+          column: {
+            depth: 25,
+          },
+        },
+        xAxis: {
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+        },
+        series: [
+          {
+            year: "2024",
+            data: [
+              29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4,
+              194.1, 95.6, 54.4,
+            ],
+            colorByPoint: true,
+          },
+          {
+            year: "2025",
+            data: [
+              32, 60.5, 115.4, 100, 100.0, 200.0, 120.6, 130.5, 190.4, 200.1,
+              80.6, 40.4,
+            ],
+          },
+        ],
+      });
+
+      // line chart
+
+      Highcharts.chart("line", {
+        title: {
+          text: "Revenue",
+          align: "left",
+        },
+
+        yAxis: {
+          title: {
+            text: "average salary of Employees",
+          },
+        },
+
+        xAxis: {
+          accessibility: {
+            rangeDescription: "Range: 2010 to 2022",
+          },
+        },
+
+        legend: {
+          layout: "vertical",
+          align: "right",
+          verticalAlign: "middle",
+        },
+
+        plotOptions: {
+          series: {
+            label: {
+              connectorAllowed: false,
+            },
+            pointStart: 2010,
+          },
+        },
+
+        series: [
+          {
+            name: "dark chocolate",
+            data: [
+              43934, 48656, 65165, 81827, 112143, 142383, 171533, 165174,
+              155157, 161454, 154610, 168960, 171558,
+            ],
+          },
+          {
+            name: "white chocolate",
+            data: [
+              24916, 37941, 29742, 29851, 32490, 30282, 38121, 36885, 33726,
+              34243, 31050, 33099, 33473,
+            ],
+          },
+          {
+            name: "milky bar",
+            data: [
+              11744, 30000, 16005, 25000, 30000, 75000, 32147, 30912, 29243,
+              29213, 25663, 28978, 30618,
+            ],
+          },
+          {
+            name: "Other",
+            data: [
+              21908, 5548, 8105, 11248, 8989, 11816, 18274, 17300, 13053, 11906,
+              10073, 11471, 11648,
+            ],
+          },
+        ],
+
+        responsive: {
+          rules: [
+            {
+              condition: {
+                maxWidth: 500,
+              },
+              chartOptions: {
+                legend: {
+                  layout: "horizontal",
+                  align: "center",
+                  verticalAlign: "bottom",
+                },
+              },
+            },
+          ],
+        },
+      });
+
+      // pie chart
+
+      Highcharts.chart("PieChart", {
+        chart: {
+          type: "pie",
+          zooming: {
+            type: "xy",
+          },
+          panning: {
+            enabled: true,
+            type: "xy",
+          },
+          panKey: "shift",
+        },
+        title: {
+          text: "pie chart",
+        },
+        tooltip: {
+          valueSuffix: "%",
+        },
+
+        series: [
+          {
+            name: "Percentage",
+            colorByPoint: true,
+            data: [
+              {
+                name: "Water",
+                y: 55.02,
+              },
+              {
+                name: "Fat",
+                sliced: true,
+                selected: true,
+                y: 26.71,
+              },
+              {
+                name: "Carbohydrates",
+                y: 1.09,
+              },
+              {
+                name: "Protein",
+                y: 15.5,
+              },
+              {
+                name: "Ash",
+                y: 1.68,
+              },
+            ],
+          },
+        ],
+      });
+
+      // bell chart
+
+      Highcharts.chart("bellChart", {
+        chart: {
+          type: "bellcurve",
+          title: "bell",
+        },
+        title: {
+          text: "bellChart"
+        },
+        series: [
+          {
+            type: "bellcurve",
+            xAxis: 1,
+            yAxis: 1,
+            baseSeries: 1,
+          },
+          {
+            data: [3.5, 3, 3.2, 3.1, 3.6, 3.9, 3.4],
+          },
+        ],
+      });
+    });
+
+    document.getElementById("logout").addEventListener("click", function () {
+      alert("want to logout ???");
+    });
+  </script>
+</html>

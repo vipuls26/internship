@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ Task</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+    <style>
+      .question-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .answer {
+        display: none;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="border-bottom">
+      <div class="container-fluid text-end p-2">
+        <button class="btn btn-outline-secondary" id="themeToggle">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <div class="mb-3">
+        <div class="question-row">
+          <strong>What is average time for software development?</strong>
+          <button class="btn btn-secondary btn-toggle">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <p class="answer">
+          While the average time taken to build an application from scratch is 3
+          to 9 months, the actual time duration varies according to complexity.
+        </p>
+        <hr />
+      </div>
+
+      <div class="mb-3">
+        <div class="question-row">
+          <strong
+            >Is it possible to hire a developer on an hourly basis?</strong
+          >
+          <button class="btn btn-secondary btn-toggle">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <p class="answer">
+          Yes. You can choose between Fixed Price or Time and Material model.
+        </p>
+        <hr />
+      </div>
+
+      <div class="mb-3">
+        <div class="question-row">
+          <strong
+            >Can you integrate custom software with existing systems?</strong
+          >
+          <button class="btn btn-secondary btn-toggle">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <p class="answer">
+          Yes, we integrate custom software with existing platforms seamlessly.
+        </p>
+        <hr />
+      </div>
+
+      <div class="mb-3">
+        <div class="question-row">
+          <strong
+            >What is your development process for .NET applications?</strong
+          >
+          <button class="btn btn-secondary btn-toggle">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <p class="answer">
+          Our agile process includes research, design, development, QA,
+          deployment, and support.
+        </p>
+        <hr />
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#themeToggle").click(function () {
+          let theme = $("html").attr("data-bs-theme");
+
+          if (theme === "dark") {
+            $("html").attr("data-bs-theme", "light");
+            // $("#themeToggle i").removeClass("fa-moon").addClass("fa-sun");
+            localStorage.setItem("theme", "light");
+          } else {
+            $("html").attr("data-bs-theme", "dark");
+            //$("#themeToggle i").removeClass("fa-sun").addClass("fa-moon");
+            localStorage.setItem("theme", "dark");
+          }
+        });
+
+        $(".btn-toggle").click(function () {
+
+          let answer = $(this).closest(".question-row").next(".answer");
+
+          answer.slideToggle(500);
+
+          let icon = $(this).find("i");
+
+          if (icon.hasClass("fa-plus")) {
+            icon.removeClass("fa-plus").addClass("fa-minus");
+          } else {
+            icon.removeClass("fa-minus").addClass("fa-plus");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

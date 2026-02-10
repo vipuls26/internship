@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery validation</title>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- jquery validation -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      label.error {
+        color: red !important;
+      }
+      input.error{
+        border-color: green;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="bg-dark">
+        <div class="container-fluid py-2">
+          <p class="text-center text-light">Jquery Validation</p>
+        </div>
+    </nav>
+    <div class="container mt-5">
+     
+      <form id="formId" class="loginForm">
+        <div class="row g-4 px-3 mb-2">
+          <div class="col-12 col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <span class="text-danger">*</span>
+            <input
+              type="text"
+              name="name"
+              class="form-control border-info"
+              placeholder="first name"
+              required
+            />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label for="lastName" class="form-label">LastName</label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              class="form-control border-info"
+              placeholder="last name"
+            />
+          </div>
+
+          <div class="col-12">
+            <label for="email" class="form-label">Email</label>
+            <span class="text-danger">*</span>
+            <input
+              type="text"
+              name="email"
+              class="form-control border-info email"
+              placeholder="example@gmail.com"
+            />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label for="password" class="form-label">Password</label>
+            <span class="text-danger">*</span>
+            <input
+              type="text"
+              name="password"
+              id="password"
+              class="form-control border-info"
+              placeholder="********"
+            />
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="confirmPassword" class="form-label"
+              >confirm Password</label
+            >
+            <span class="text-danger">*</span>
+            <input
+              type="text"
+              name="confirmPassword"
+              id="confirmPassword"
+              class="form-control border-info"
+              placeholder="********"
+            />
+          </div>
+
+          <div class="col-12 col-md-4">
+            <label for="age" class="form-label">Age</label>
+            <span class="text-danger">*</span>
+            <input
+              type="number"
+              name="age"
+              id="age"
+              class="form-control border-info"
+              placeholder="age"
+            />
+          </div>
+
+          <div class="col-12 col-md-5">
+            <label for="gender">Gender</label>
+            <span class="text-danger">*</span>
+            <br />
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input border-info"
+                type="radio"
+                name="gender"
+                id="gender"
+                value="male"
+                checked
+              />
+              <label class="form-check-label" for="inlineRadio1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input border-info"
+                type="radio"
+                name="gender"
+                id="gender"
+                value="female"
+              />
+              <label class="form-check-label" for="inlineRadio2">Female</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input border-info"
+                type="radio"
+                name="gender"
+                id="gender"
+                value="other"
+              />
+              <label class="form-check-label" for="inlineRadio2">other</label>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <label for="birthDate" class="form-label">BOD</label>
+            <span class="text-danger">*</span>
+            <input
+              type="date"
+              name="birthDate"
+              id="birthDate"
+              class="form-control border-info"
+            />
+          </div>
+
+          <div class="col-12 col-md-4">
+            <label for="city" class="form-label">City</label>
+            <span class="text-danger">*</span>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              class="form-control border-info"
+              placeholder="city"
+            />
+          </div>
+
+          <div class="col-12 col-md-4">
+            <label for="zipCode" class="form-label">Zip Code</label>
+            <span class="text-danger">*</span>
+            <input
+              type="number"
+              name="zipCode"
+              id="zipCode"
+              class="form-control border-info"
+              placeholder="zip code"
+            />
+          </div>
+
+          <div class="col-12 col-md-4">
+            <label for="state" class="form-label">state</label>
+            <span class="text-danger">*</span>
+            <input
+              type="text"
+              name="state"
+              id="state"
+              class="form-control border-info"
+            />
+          </div>
+
+          <div class="col-12 col-md-8 g-3">
+            <div>
+                <label for="phone" class="form-label">Language</label>
+            </div>
+            
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input border-info"
+                type="checkbox"
+                id="English"
+                value="English"
+              />
+              <label class="form-check-label" for="English">English</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input border-info"
+                type="checkbox"
+                id="Gujarati"
+                value="Gujarati"
+              />
+              <label class="form-check-label" for="Gujarati">Gujarati</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input border-info"
+                type="checkbox"
+                id="Hindi"
+                value="Hindi"
+              />
+              <label class="form-check-label" for="Hindi">Hindi</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input border-info"
+                type="checkbox"
+                id="other"
+                value="other"
+              />
+              <label class="form-check-label" for="other">other</label>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <label for="phone" class="form-label">Phone number</label>
+            <span class="text-danger">*</span>
+            <input type="number" name="phone" id="phone" class="form-control border-info" placeholder="phone number">
+          </div>
+
+          <div class="col-12">
+            <label for="address" class="form-label">Address</label>
+            <span class="text-danger">*</span>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              class="form-control border-info"
+              placeholder="Address"
+            />
+          </div>
+
+          <div class="col-12 text-center w-sm-100">
+            <input type="submit" class="btn btn-dark" />
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <footer class="bg-dark text-center text-light">2026 @ footer</footer>
+    <script>
+      $(document).ready(function () {
+        $("#submit").click(function (event) {
+          event.preventDefault();
+        });
+
+        $.validator.addMethod(
+          "IsValidEmail",
+          function (value, element) {
+            let emailRegEx = new RegExp(
+              /^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i,
+            );
+            return emailRegEx.test(value);
+          },
+          "invalid email",
+        );
+
+        const emailArray = ["vipul@gmail.com", "test@gmail.com"];
+
+        $.validator.addMethod(
+          "emailExisting",
+          function (value, element) {
+            return this.optional(element) || !emailArray.includes(value);
+          },
+          "this email is taken",
+        );
+
+        $(".loginForm").validate({
+          onkeydown: function (element) {
+            let validator = this;
+            setTimeout(function () {
+              validator.element(element);
+            }, 1000);
+          },
+          rules: {
+            name: {
+              required: true,
+              minlength: 3,
+            },
+            email: {
+              required: true,
+              IsValidEmail: true,
+              emailExisting: true,
+            },
+            password: {
+              required: true,
+              minlength: 6,
+            },
+            confirmPassword: {
+              required: true,
+              equalTo: "#password",
+            },
+            age: {
+              required: true,
+              range: [0, 100],
+            },
+            gender: {
+              required: true,
+            },
+            birthDate: {
+              required: true,
+            },
+            city: {
+              required: true,
+              minlength: 2,
+            },
+            zipCode: {
+              required: true,
+              maxlength: 6,
+            },
+
+            state: {
+              required: true,
+              minlength: 3,
+            },
+
+            phone: {
+                required: true,
+                maxlength: 10
+            },
+            address: {
+              required: true,
+              minlength: 5,
+              maxlength: 50,
+            },
+          },
+          messages: {
+            name: {
+              required: "name is required",
+              minlength: "name must be 3 or more character"
+            },
+            email: {
+              required: "email is required",
+              emailExisting: "email already taken",
+            },
+            password: {
+              required: "password is required",
+              minlength: "password should be more than 2 character",
+            },
+            confirmPassword: {
+              required: "confirm password is requried",
+              equalTo: "password does not match",
+            },
+            age: {
+              required: "age is required",
+            },
+            gender: "gender is required",
+
+            birthDate: "birth date is required",
+
+            city: {
+              required: "city is required",
+              minlength: "name of city must be more than 1 character",
+            },
+            zipCode: {
+              required: "zip code is required",
+              maxlength: "zip code should be not more than 6 number",
+            },
+
+            state: {
+              required: "state is requried",
+              minlength: "name of state must be more than 2 character",
+            },
+
+            phone:{
+                required: "phone number is required",
+                maxlength: "not more than 10 digit"
+            },
+            address: {
+              required: "address is required",
+              minlength: "address should be not less than 5 character",
+              maxlength: "address should not more than 25 character",
+            },
+          },
+
+          highlight: function(error,element,validClass){
+            $(element).removeClass("bg-info").addClass("bg-success");
+          },
+
+          submitHandler: function (form) {
+            form.submit();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

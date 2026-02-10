@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>product</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h4>load product</h4>
+      <button class="btn btn-info product">Get product</button>
+      <hr />
+     
+      <div class="row justify-content-start g-3" id="loadProduct">
+     
+    
+        <div id="msg" class="d-block text-danger">product not load</div>
+      </div>
+    </div>
+
+    <script>
+     
+      $(document).ready(function () {
+        $(".product").click(function () {
+          $.ajax({
+            url: "./product.json",
+            success: function (result) {
+              $("#loadProduct").html(result);
+              // console.log(result);
+
+              let productDisplay = "";
+              result.forEach((p) => {
+                productDisplay += `
+                     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 shadow-sm border-dark text-center p-2">
+                      <img src="${p.img}" class="img-fluid mx-auto" style="max-height:140px"><hr>
+                        <h6>${p.name}</h6>
+                        <p class="text-primary">₹${p.price}</p>
+                    </div>
+                  </div>
+                  `;
+              });
+
+              $("#loadProduct").append(productDisplay);
+            },
+            error: function (xhr, status, error) {
+              console.log(error);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

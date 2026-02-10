@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-image: url(assets/image1.jpg);
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark">
+      <div class="container-fluid text-light">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="activelink">
+          <li>
+            <a href="task.html" class="nav-link text-light fs-5" id="active"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="./form.html" class="nav-link text-light fs-5 bg-warning"
+              >Contact us</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="faq.html" class="nav-link text-light fs-5">Faqs</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <div class="card border-5 px-3">
+        <div class="card-title text-center text-info fw-bold fs-4 mt-3">
+          user form
+        </div>
+        <div class="card-body">
+          <div class="row g-5">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+              <label for="name" class="form-label text-dark fw-bold"
+                >Name:</label
+              >
+              <span class="text-danger">*</span>
+              <input
+                type="text"
+                name="name"
+                placeholder="enter name"
+                class="form-control"
+                id="text"
+              />
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+              <label for="lastName" class="form-label fw-bold"
+                >Last Name:</label
+              >
+              <input
+                type="text"
+                name="lastName"
+                placeholder="enter last name"
+                class="form-control"
+                id="lastName"
+              />
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label fw-bold">Email:</label>
+              <span class="text-danger">*</span>
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="example@gmail.com"
+                id="email"
+              />
+            </div>
+
+            <div class="col-12 col-sm-4 col-md-4">
+              <label for="age" class="form-label">Age</label>
+              <input
+                type="number"
+                name="age"
+                class="form-control"
+                placeholder="age"
+              />
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-8">
+              <label for="phone" class="form-label">Phone number</label>
+              <span class="text-danger">*</span>
+
+              <input
+                type="tel"
+                name="phone"
+                class="form-control"
+                placeholder="phone number"
+                id="text"
+              />
+            </div>
+
+            <div class="col-12 col-sm-2 col-md-12">
+              <label for="gender" class="form-label fw-bold">Gender:</label>
+
+              <br />
+              <label for="male" class="form-label mx-2">Male</label>
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                class="form-check-input"
+                checked
+              />
+
+              <label for="female" class="form-label mx-2">Female</label>
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                class="form-check-input"
+              />
+            </div>
+
+            <div class="col-12 text-center">
+              <input type="submit" value="submit" class="btn btn-dark" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <input
+        type="submit"
+        value="check text field"
+        class="btn btn-warning"
+        id="button"
+      />
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#button").click(function () {
+          $("#text,#email").addClass("bg-warning");
+        });
+      });
+
+      $(document).ready(function () {
+        $("#active").click(function () {
+          $("#active").addClass("bg-danger");
+          alert("page load sucessfully");
+        });
+      });
+    </script>
+  </body>
+</html>

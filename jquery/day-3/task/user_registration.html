@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>reading form value</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container mt-5">
+    <form action="" method="get" id="formId">
+      <div class="card border-2 border-info mx-3 my-4 px-4 py-4">
+        <div class="card-title text-center fw-bold fs-5 text-dark">
+          user information
+        </div>
+
+        <div class="card-body">
+          <div class="row g-4">
+            <div class="col-12 col-md-6">
+              <label for="name" class="form-label">Name</label>
+              <span class="text-danger">*</span>
+              <input type="text" name="firstName" id="firstName" class="form-control border border-info" />
+
+              <small class="text-danger invalid-feedback" id="checkFirstName">
+                first name is missing
+              </small>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="lastname" class="form-label">LastName</label>
+              <input type="text" name="LastName" id="LastName" class="form-control border border-info" />
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email</label>
+              <span class="text-danger">*</span>
+              <input type="email" name="email" id="email" class="form-control border border-info" />
+              <small class="form-text text-danger invalid-feedback">your email is not valid</small>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <label for="age" class="form-label">Age</label>
+              <span class="text-danger">*</span>
+              <input type="text" name="age" id="age" class="form-control border border-info" />
+              <small class="form-text text-danger invalid-feedback">you age must be number and greater than 0
+              </small>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <label for="city" class="form-label">City</label>
+              <input type="text" name="city" id="city" class="form-control border border-info" />
+            </div>
+
+
+            <hr />
+
+            <div class="row d-lg-flex justify-content-center g-3">
+              <div class="col-12">
+                <div class="form-check form-check-inline">
+                  <input type="checkbox" id="terms" class="form-check-input border border-info" />
+                  <label for="terms" class="form-check-label">Terms and Conditions</label>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="text-center text-md-center">
+                  <input type="submit" value="register" class="btn btn-warning w-100 w-md-25" id="submit"
+                    disabled="disabled" />
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="text-center text-sm-center">
+                  <input type="button" value="reset" class="btn btn-dark w-100 w-md-25" id="formreset" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="container mt-5" id="formData1"></div>
+  <div class="container mt-5" id="formData2"></div>
+
+  <script>
+    //function for name
+
+    function getUserName() {
+      let userFirstName = $("#firstName").val();
+      let name = document.getElementById("firstName");
+      console.log(name.value);
+      //console.log(userFirstName);
+
+      name.addEventListener("blur", () => {
+        if (userFirstName.length === "") {
+          $("#checkFirstName").show();
+          userFirstNameError = false;
+          name.classList.add("is-invalid");
+          return false;
+        } else if (userFirstName.length < 3 || userFirstName.length > 10) {
+          $("#checkFirstName").show();
+          $("#checkFirstName").html("name must be between 3 and 10");
+          name.classList.add("is-invalid");
+          $("#firstName")
+            .removeClass("border-info")
+            .addClass("border-danger");
+          userFirstNameError = false;
+          return false;
+        } else {
+          $("#checkFirstName").hide();
+          userFirstNameError = true;
+          name.classList.remove("is-invalid");
+          $("#firstName")
+            .removeClass("border-danger")
+            .addClass("border-success");
+        }
+      });
+    }
+
+    function checkEamil() {
+      const email = document.getElementById("email");
+      email.addEventListener("blur", () => {
+        let regex =
+          /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]{2,5})$/;
+
+        let s = email.value;
+        if (regex.test(s)) {
+          email.classList.remove("is-invalid");
+          EmailError = true;
+          $("#email").removeClass("border-danger").addClass("border-info");
+        } else {
+          email.classList.add("is-invalid");
+          EmailError = false;
+          $("#email").removeClass("border-info").addClass("border-danger");
+        }
+      });
+    }
+
+    function checkAge() {
+      const age = document.getElementById("age");
+      age.addEventListener("blur", () => {
+        let testAge = age.value;
+
+        console.log(testAge);
+
+        if (testAge > 0) {
+          age.classList.remove("is-invalid");
+          ageError = true;
+          $("#age").removeClass("border-danger").addClass("border-info");
+        } else {
+          age.classList.add("is-invalid");
+          ageError = false;
+          $("#age").removeClass("border-info").addClass("border-danger");
+        }
+      });
+    }
+
+    $(document).ready(function () {
+      $("#submit").click(function (event) {
+        event.preventDefault();
+        $("#formData1").text($("form").serialize());
+      });
+
+      //firstname
+      $("#checkFirstName").hide();
+      let userFirstNameError = true;
+      $("#firstName").keyup(function () {
+        getUserName();
+      });
+
+      //email
+      let EmailError = true;
+      $("#email").keyup(function () {
+        checkEamil();
+      });
+
+      //age
+      let ageError = true;
+      $("#age").keyup(function () {
+        checkAge();
+      });
+
+
+      $("#terms").click(function () {
+        if ($("#submit").is(":disabled")) {
+          $("#submit").removeAttr("disabled");
+        } else {
+          $("#submit").attr("disabled", "disabled");
+        }
+      });
+
+      $("#formreset").click(function () {
+        $("#formId").get(0).reset();
+      });
+    });
+  </script>
+</body>
+
+</html>

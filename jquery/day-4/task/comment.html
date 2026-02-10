@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>comments</title>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container mt-5">
+      <div class="card">
+        <div class="card-title text-center fs-4 mt-5">Add your comments</div>
+        <div class="card-body">
+          <form action="" method="post" id="formId">
+            <div class="row g-4">
+              <div class="col-12 col-md-6">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  class="form-control border border-info"
+                />
+                <small class="text-danger invalid-feedback" id="nameInput"
+                  >name is missing</small
+                >
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="form-control border border-info"
+                />
+                <small class="form-text text-danger invalid-feedback"
+                  >your email is not valid</small
+                >
+              </div>
+
+              <div class="col-12">
+                <label for="comment" class="form-label">comment here</label>
+                <input
+                  type="text"
+                  name="comment"
+                  id="comment"
+                  class="form-control border border-info"
+                />
+                <small class="text-danger invalid-feedback" id="commentInput"
+                  >comment should be not empty</small
+                >
+              </div>
+
+              <div class="col-12 text-center">
+                <input
+                  type="submit"
+                  value="submit"
+                  class="btn btn-warning"
+                  id="submit"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr class="table">
+            <th>Name</th>
+            <th>Email</th>
+            <th>comment</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="commentBlock" class="commentBlock"></tbody>
+      </table>
+    </div>
+
+    <script>
+      function checkName() {
+        let userName = $("#name").val();
+        let name = document.getElementById("name");
+        //console.log(name.value);
+
+        // console.log(userName.length);
+
+        name.addEventListener("blur", () => {
+          if (userName.length === "") {
+            $("#nameInput").show();
+            name.classList.add("is-invalid");
+            return false;
+          } else if (userName.length < 3 || userName.length > 10) {
+            $("#nameInput").show();
+            $("#nameInput").html("name must be between 3 to 10");
+            name.classList.add("is-invalid");
+            $("#name").removeClass("border-info").addClass("border-danger");
+            return false;
+          } else {
+            $("#nameInput").hide();
+            name.classList.remove("is-invalid");
+            $("#name")
+              .removeClass("border-info")
+              .removeClass("border-danger")
+              .addClass("border-success");
+          }
+        });
+      }
+
+      function checkEmail() {
+        const email = document.getElementById("email");
+        email.addEventListener("blur", () => {
+          let regex =
+            /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]{2,5})$/;
+
+          let s = email.value;
+          if (regex.test(s)) {
+            email.classList.remove("is-invalid");
+            $("#email")
+              .removeClass("border-danger")
+              .removeClass("border-info")
+              .addClass("border-success");
+          } else {
+            email.classList.add("is-invalid");
+            $("#email").removeClass("border-info").addClass("border-danger");
+          }
+        });
+      }
+
+      function checkComment() {
+        let userComment = $("#comment").val();
+        let comment = document.getElementById("comment");
+
+        console.log(userComment.length);
+        // console.log(userComment);
+        // console.log(comment.value);
+
+        comment.addEventListener("blur", () => {
+          if (userComment.length === 0) {
+            $("#commentInput").show();
+            comment.classList.add("is-invalid");
+            $("#comment").removeClass("border-info").addClass("border-danger");
+            return false;
+          } else {
+            $("#commentInput").hide();
+            comment.classList.remove("is-invalid");
+            $("#comment")
+              .removeClass("border-info")
+              .removeClass("border-danger")
+              .addClass("border-success");
+          }
+        });
+      }
+
+      $(document).ready(function () {
+        $("#submit").click(function (event) {
+          event.preventDefault();
+
+          addName = name.val();
+          addEmail = email.val();
+          addComment = comment.val();
+
+          // console.log(addName);
+          // console.log(addEmail);
+          // console.log(addComment);
+
+          if (addName === "" && addEmail === "") {
+            alert("name or email is empty");
+          } else {
+            $(".commentBlock").append(`
+               
+          <tr>
+            <td>${addName}</td>
+            <td>${addEmail}</td>
+            <td>${addComment}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-danger delete mx-1" id="delete">Delete</button>
+              <button class="btn btn-sm btn-outline-primary edit mx-1" id="edit">Edit</button>
+            </td>
+        </tr>
+
+            `);
+
+            $("#formId")[0].reset();
+          }
+        });
+
+        let name = $("#name").keyup(function () {
+          checkName();
+        });
+
+        let email = $("#email").keyup(function () {
+          checkEmail();
+        });
+        let comment = $("#comment").keyup(function () {
+          checkComment();
+        });
+
+        //delete task
+        $(".commentBlock").on("click", ".delete", function () {
+          alert("are you sure you want to delete this comment");
+          $(this)
+            .closest("tr")
+            .fadeOut(() => $(this).remove());
+        });
+
+      
+        $(".commentBlock").on("click", ".edit", function () {
+          let btn = $(this);
+          let row = btn.closest("tr");
+          let commentTd = row.children("td").eq(2); 
+
+          if (btn.text() === "Edit") {
+            commentTd
+              .attr("contenteditable", "true")
+              .addClass("border border-warning")
+              .focus();
+
+            btn
+              .text("Update")
+              .removeClass("btn-outline-primary")
+              .addClass("btn-outline-success");
+          } else {
+            commentTd
+              .removeAttr("contenteditable")
+              .removeClass("border border-warning");
+
+            btn
+              .text("Edit")
+              .removeClass("btn-outline-success")
+              .addClass("btn-outline-primary");
+
+            alert("Comment updated successfully");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

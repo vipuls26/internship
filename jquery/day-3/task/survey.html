@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <style>
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h4>Customer Feedback Survey</h4>
+    </div>
+
+    <div class="card-body">
+      <form id="surveyForm">
+
+        <!-- Name -->
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" id="name" class="form-control">
+          <div class="error" id="nameError"></div>
+        </div>
+
+        <!-- Gender (Radio) -->
+        <div class="mb-3">
+          <label class="form-label">Gender</label><br>
+          <input type="radio" name="gender" value="Male"> Male
+          <input type="radio" name="gender" value="Female" class="ms-3"> Female
+          <input type="radio" name="gender" value="Other" class="ms-3"> Other
+          <div class="error" id="genderError"></div>
+        </div>
+
+        <!-- Interests (Checkbox) -->
+        <div class="mb-3">
+          <label class="form-label">Interests</label><br>
+          <input type="checkbox" class="interest" value="Technology"> Technology<br>
+          <input type="checkbox" class="interest" value="Sports"> Sports<br>
+          <input type="checkbox" class="interest" value="Music"> Music<br>
+          <div class="error" id="interestError"></div>
+        </div>
+
+        <!-- Dropdown -->
+        <div class="mb-3">
+          <label class="form-label">How did you hear about us?</label>
+          <select id="source" class="form-select">
+            <option value="">Select</option>
+            <option>Google</option>
+            <option>Social Media</option>
+            <option>Friend</option>
+          </select>
+          <div class="error" id="sourceError"></div>
+        </div>
+
+        <!-- Buttons -->
+        <button type="button" id="previewBtn" class="btn btn-info">Preview</button>
+        <button type="reset" class="btn btn-secondary ms-2">Reset</button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Preview Section -->
+  <div class="card mt-4 d-none" id="previewCard">
+    <div class="card-header bg-success text-white">
+      Survey Preview
+    </div>
+    <div class="card-body" id="previewData"></div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function () {
+
+  $("#previewBtn").click(function () {
+
+    $(".error").text(""); // clear errors
+    let isValid = true;
+
+    let name = $("#name").val().trim();
+    let gender = $("input[name='gender']:checked").val();
+    let source = $("#source").val();
+
+    let interests = [];
+    $(".interest:checked").each(function () {
+      interests.push($(this).val());
+    });
+
+    // Validation
+    if (name === "") {
+      $("#nameError").text("Name is required");
+      isValid = false;
+    }
+
+    if (!gender) {
+      $("#genderError").text("Please select gender");
+      isValid = false;
+    }
+
+    if (interests.length === 0) {
+      $("#interestError").text("Select at least one interest");
+      isValid = false;
+    }
+
+    if (source === "") {
+      $("#sourceError").text("Please select an option");
+      isValid = false;
+    }
+
+    if (!isValid) return;
+
+    // Preview Data
+    $("#previewData").html(`
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Gender:</strong> ${gender}</p>
+      <p><strong>Interests:</strong> ${interests.join(", ")}</p>
+      <p><strong>Source:</strong> ${source}</p>
+    `);
+
+    $("#previewCard").removeClass("d-none");
+  });
+
+});
+</script>
+
+</body>
+</html>

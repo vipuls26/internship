@@ -1,0 +1,27 @@
+[
+     {
+          "userName": "Vipul",
+          "email": "vipuls@gmail.com",
+          "city": "Anand",
+          "education": "B.tech",
+          "currentCity": "surat",
+          "profileImage": "./assest/images.jpeg",
+          "github" : "https://github.com/vipuls26",
+          "linkdin" : "https://www.linkedin.com/in/vipulsodhaparmar26",
+          "project1": {
+            "projectName" : "Logistic management system",
+            "technology" : "PHP core",
+            "time": "2 month"
+          },
+          "project2": {
+            "projectName" : "Paper Drawing System",
+            "technology" : ".Net mvc",
+            "time": "3 month"
+          },
+          "project3": {
+            "projectName" : "Agrotrade Hub",
+            "technology" : ".Net mvc",
+            "time": "4 month"
+          }
+        }
+]
